@@ -18,5 +18,8 @@ int main(void)
     var = 10;
     size = 10;
 
+    printf("Integer: %d\n", max);
+    printf("чубапепе");
+
     return 0;
 }
