@@ -1,7 +1,15 @@
 #include <stdio.h>
+#include <string.h>
 int main(void)
 {
     printf("Hello, World!\n");
+
+    // char name[10];
+    // printf("Say my name:\n");
+    // scanf("%10s[^/n]", name);
+    // if (!strcmp(name,"Heisenberg")){
+    //     printf("You`re god damn right\n");
+    // }
 
     // int dec, hex, oct;
 
@@ -12,11 +20,11 @@ int main(void)
     // char symbol;
     // symbol = 'B';
 
-    // int var, size;
+    int var, size;
     // int max = 1337, buffer;
     
-    // var = 10;
-    // size = 10;
+    var = 10;
+    size = 100;
 
     // printf("Integer: %d\n", max);
     // // printf("чубапепе");
@@ -51,5 +59,18 @@ int main(void)
         }
         printf("\n");
     }
+
+    // char message[] = {'H','e','l','l','o'};
+    // printf("Сообщение: %s \n", message);
+    // for (int n = 0; n<(sizeof(message)/sizeof(message[0])); n++){
+    //     printf("%d ",message[n]);
+    // }
+    
+    printf("var is %d \n", var);
+    printf("size = %d \n", size);
+    var = *&size;
+    size = *&var;
+    printf("var = %d \n", var);
+    printf("size = %d \n", size);
     return 0;
 }
