@@ -20,12 +20,7 @@ int main(void)
     // char symbol;
     // symbol = 'B';
 
-    int var, size;
-    // int max = 1337, buffer;
     
-    var = 10;
-    size = 100;
-
     // printf("Integer: %d\n", max);
     // // printf("чубапепе");
 
@@ -65,12 +60,23 @@ int main(void)
     // for (int n = 0; n<(sizeof(message)/sizeof(message[0])); n++){
     //     printf("%d ",message[n]);
     // }
-    
-    printf("var is %d \n", var);
-    printf("size = %d \n", size);
-    var = *&size;
-    size = *&var;
-    printf("var = %d \n", var);
-    printf("size = %d \n", size);
+    // int var, size;
+    // var = 10;
+    // size = 100;
+    // int *const pvar = &var;
+    // int *const psize = &size;
+    // printf("var is %d \n", var);
+    // printf("size is %d \n", size);
+    // size = *(&size - 1);
+    // printf("var = %d \n", var);
+    // printf("size = %d \n", size);
+
+    int a,b;
+    printf(" a & b:%d %d",a,b);
+    a = a+b;
+    b = a-b;
+    a = a-b;
+    printf(" a & b:%d %d",a,b);
     return 0;
+
 }
