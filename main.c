@@ -1,8 +1,25 @@
 #include <stdio.h>
 #include <string.h>
+void BinaryPrint(int c){
+        int i=0;
+        short d[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        while(c>0 && i<16)
+        {
+            d[i]=c%2;
+            c=c/2;
+            i++;
+        }
+        for(int j=i-1;j>=0;j--)
+        {
+            printf("%d",d[j]);
+            d[j] =0;
+        }
+        printf("\n");
+    }
 int main(void)
 {
     printf("Hello, World!\n");
+    
 
     // char name[10];
     // printf("Say my name:\n");
@@ -71,12 +88,14 @@ int main(void)
     // printf("var = %d \n", var);
     // printf("size = %d \n", size);
 
-    int a,b;
-    printf(" a & b:%d %d",a,b);
-    a = a+b;
-    b = a-b;
-    a = a-b;
-    printf(" a & b:%d %d",a,b);
+    int a,b,c;
+    printf("Введите через пробел: ");
+    scanf("%d %d", &a, &b);
+    printf(" a & b:%d %d\n",a,b);
+    a = a^b;
+    b = a^b;
+    a = a^b;
+    printf(" a & b:%d %d\n",a,b);
     return 0;
 
 }
