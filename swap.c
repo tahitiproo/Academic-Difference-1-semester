@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <locale.h>
+#include <stdlib.h>
 // void BinaryPrint(int c){
 //         int i=0;
 //         short d[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
@@ -22,11 +23,60 @@ void Swap(int *a, int *b){
     *b=*a^*b;
     *a=*a^*b;
 }
+void ZerosArray()
+{
+printf("Введите количество элементов в массиве ");
+    short c,d;
+    d=0;
+    scanf("%hd",&c);
+    printf("%hd",c);
+    int* array = (int*)malloc(c*sizeof(int));
+    if (array == NULL)
+    {
+        printf("Ошибка выделения памяти");
+        return 1;
+    }
+    printf("Введите %hd элементов массива через пробел: ", c);
+    for(int i = 0; i<c; i++)
+    {
+        scanf("%d", &array[i]);
+        if (array[i]==0)
+        {
+            d++;
+        }
+    }
+    if (sizeof(array)/sizeof(array[0])==c)
+    {
+        printf("У введённого массива %d нулей",d);
+    }
+    else
+    {
+        printf("Ошибка ввода");
+        return 1;
+    }
+    free(array);
+}
 int main(void)
 {
     printf("Hello, World!\n");
     char *locale = setlocale(LC_ALL, "");
+    int a,b;
+    printf("Введите 2 целочисленные переменные через пробел: ");
+    if (scanf("%d %d", &a, &b)==2)
+    {
+        printf(" a & b:%d %d\n",a,b);
+        Swap(&a, &b);
+        printf(" a & b:%d %d\n",a,b);
+    }
+    else
+    {
+        printf("Ошибка ввода");
+        return 1;
+    }
 
+    ZerosArray();
+
+    return 0;
     // char name[10];
     // printf("Say my name:\n");
     // scanf("%10s[^/n]", name);
@@ -93,12 +143,6 @@ int main(void)
     // size = *(&size - 1);
     // printf("var = %d \n", var);
     // printf("size = %d \n", size);
-    int a,b;
-    printf("Введите 2 целочисленные переменные через пробел: ");
-    scanf("%d %d", &a, &b);
-    printf(" a & b:%d %d\n",a,b);
-    Swap(&a, &b);
-    printf(" a & b:%d %d\n",a,b);
-    return 0;
+    
 
 }
