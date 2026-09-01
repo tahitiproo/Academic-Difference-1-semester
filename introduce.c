@@ -19,7 +19,7 @@
 //         printf("\n");
 //     }
 
-void ZerosArray()
+int ZerosArray()
 {
 printf("Введите количество элементов в массиве ");
     short c,d;
@@ -61,25 +61,65 @@ int main(void)
 {
     printf("Hello, World!\n");
 
-    ZerosArray();
+    //ZerosArray();
 
     
-    char *locale = setlocale(LC_ALL, "");
-    int a,b;
-    printf("Введите 2 целочисленные переменные через пробел: ");
-    if (scanf("%d %d", &a, &b)==2)
+    // char *locale = setlocale(LC_ALL, "");
+    // int a,b;
+    // printf("Введите 2 целочисленные переменные через пробел: ");
+    // if (scanf("%d %d", &a, &b)==2)
+    // {
+    //     printf(" a & b:%d %d\n",a,b);
+    //     Swap(&a, &b);
+    //     printf(" a & b:%d %d\n",a,b);
+    // }
+    // else
+    // {
+    //     printf("Ошибка ввода");
+    //     return 1;
+    // }
+    int c,d;
+    printf("НАХОЖДЕНИЕ НЕПОЛНОГО ЧАСТНОГО \n Введите 2 целочисленные переменные через пробел: ");
+    if (scanf("%d %d", &c, &d)==2)
     {
-        printf(" a & b:%d %d\n",a,b);
-        Swap(&a, &b);
-        printf(" a & b:%d %d\n",a,b);
+        if (c%d==0)
+        {
+            printf("Первое число делится на второе без остатка, q = %d\n", c/d);
+        }
+        else
+        {
+            for(int i=1; i<d; i++)
+            {
+                if ((c-i)%d==0)
+                {
+                    c = c-i;
+                    int q = 0;
+                    while (c!=0)
+                    {
+                        c = c-d;
+                        q++;
+                    }
+                    c = c+i;
+                    printf("неполное частное c на d является %d, остаток равен %d \n", q, i);
+                    printf("Проверка \n");
+                    if (q*d==c)
+                    {
+                        printf("Да, неполное частное c на d является %d, \n", q);
+                    }
+                    else
+                    {
+                        printf("Нет, неполное частное c на d не является %d, \n", q);
+                    }
+                }
+            }
+            
+        }
     }
     else
     {
         printf("Ошибка ввода");
         return 1;
     }
-
-    
 
     return 0;
 
