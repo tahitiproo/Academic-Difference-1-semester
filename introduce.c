@@ -105,10 +105,8 @@ int IncompleteQuotient()
         return 1;
     }
 }
-int main(void)
+int LuckyTickets()
 {
-    SetConsoleOutputCP(1251);
-    SetConsoleCP(1251);
     int a;
     int b=0;
     int c=0;
@@ -133,6 +131,12 @@ int main(void)
         c += pow(array[i], 2);
     }
     printf("Количество счастливых билетов:%d\n",c);
+}
+int main(void)
+{
+    SetConsoleOutputCP(1251);
+    SetConsoleCP(1251);
+    LuckyTickets();
     //IncompleteQuotient();
     //ZerosArray();
 
