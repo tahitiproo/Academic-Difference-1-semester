@@ -3,6 +3,7 @@
 #include <locale.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <math.h>
 // void BinaryPrint(int c){
 //         int i=0;
 //         short d[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
@@ -58,31 +59,8 @@ void Swap(int *a, int *b){
     *b=*a^*b;
     *a=*a^*b;
 }
-int main(void)
+int IncompleteQuotient()
 {
-    printf("Hello, World!\n");
-    SetConsoleOutputCP(1251);
-    SetConsoleCP(1251);
-    printf("Хелло мир\n");
-
-    //ZerosArray();
-
-    
-    // char *locale = setlocale(LC_ALL, "");
-    // int a,b;
-    // printf("Введите 2 целых числа: ");
-    // if (scanf("%d %d", &a, &b)==2)
-    // {
-    //     printf(" a & b:%d %d\n",a,b);
-    //     Swap(&a, &b);
-    //     printf(" a & b:%d %d\n",a,b);
-    // }
-    // else
-    // {
-    //     printf("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");
-    //     return 1;
-    // }
-    printf("Деление -9 на -13 равно %d \n", -9/-13);
     int c,e,d,q = 0;
     printf("Введите 2 целых числа: ");
     if (scanf("%d %d", &e, &d)==2)
@@ -126,6 +104,52 @@ int main(void)
         printf("Ошибка: введены некорректные данные.");
         return 1;
     }
+}
+int main(void)
+{
+    SetConsoleOutputCP(1251);
+    SetConsoleCP(1251);
+    int a;
+    int b=0;
+    int c=100;
+    int array[27] = {0};
+    int size = sizeof(array)/sizeof(array[0]);
+    while (c<pow(10, 3))
+    {
+        a=c;
+        while(a>0)
+        {
+            b += a%10;
+            a = a/10;
+        }
+        array[b-1] += 1;
+        b=0;
+        c++;
+    }
+    for (int i=0; array[i]<size; i++)
+    {
+        c += pow(array[i], 2);
+    }
+    printf("Количество счастливых билетов:%d\n",c);
+    //IncompleteQuotient();
+    //ZerosArray();
+
+    
+    // char *locale = setlocale(LC_ALL, "");
+    // int a,b;
+    // printf("Введите 2 целых числа: ");
+    // if (scanf("%d %d", &a, &b)==2)
+    // {
+    //     printf(" a & b:%d %d\n",a,b);
+    //     Swap(&a, &b);
+    //     printf(" a & b:%d %d\n",a,b);
+    // }
+    // else
+    // {
+    //     printf("Ошибка ввода");
+    //     return 1;
+    // }
+    
 
     return 0;
 
