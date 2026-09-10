@@ -111,8 +111,8 @@ int main(void)
     SetConsoleCP(1251);
     int a;
     int b=0;
-    int c=100;
-    int array[27] = {0};
+    int c=0;
+    int array[28] = {0};
     int size = sizeof(array)/sizeof(array[0]);
     while (c<pow(10, 3))
     {
@@ -122,12 +122,14 @@ int main(void)
             b += a%10;
             a = a/10;
         }
-        array[b-1] += 1;
+        array[b] += 1;
         b=0;
         c++;
     }
-    for (int i=0; array[i]<size; i++)
+    c=0;
+    for (int i=0; i<size; i++)
     {
+        printf("Количество билетов с суммой %d:%d\n",i,array[i]);
         c += pow(array[i], 2);
     }
     printf("Количество счастливых билетов:%d\n",c);
