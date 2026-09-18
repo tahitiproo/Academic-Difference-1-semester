@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <math.h>
+#include <stdbool.h>
 // void BinaryPrint(int c){
 //         int i=0;
 //         short d[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
@@ -132,11 +133,74 @@ int LuckyTickets()
     }
     printf("Количество счастливых билетов:%d\n",c);
 }
+#define max_size 255
+struct Stack
+{
+    char data[max_size];
+    int top;
+};
+int Push(struct Stack *s, char value)
+{
+    if (s->top < max_size - 1)
+    {
+        s->top++;
+        s->data[s->top] = value;
+        return 1;
+    }
+    else
+    {
+        printf("Стек переполнен\n");
+        return 0;
+    }
+}
+int BracketBalance()
+{
+    char string[255];
+    int count = 0;
+    bool flag[2] = {false, false};
+    printf("Введите строку со скобками: ");
+    scanf("%s", string);
+    int len = strlen(string);
+    for(int i=0; i<len; i++)
+    {
+        switch (string[i])
+        {
+            case '(':
+                count++;
+                if (i==len/2-1 && count-1==i)
+                {
+                    flag[0] = true;
+                }
+                break;
+            case ')':
+                count--;
+                if (count<0)
+                {
+                    flag[1] = false;
+                }
+                else if (i==len-1 && count==0)
+                {
+                    flag[1] = true;
+                }
+                break;
+        }
+    }
+    if (count==0 && flag[0]==true && flag[1]==true && len%2==0)
+    {
+        printf("Скобки расставлены верно");
+    }
+    else
+    {
+        printf("Скобки расставлены неверно");
+    }
+    return 0;
+}
 int main(void)
 {
     SetConsoleOutputCP(1251);
     SetConsoleCP(1251);
-    LuckyTickets();
+    BracketBalance();
+    //LuckyTickets();
     //IncompleteQuotient();
     //ZerosArray();
 
