@@ -195,11 +195,41 @@ int BracketBalance()
     }
     return 0;
 }
+int SimpleNumbers()
+{
+    int a;
+    int count = 0;
+    if (scanf("%d",&a)!=1)
+    {
+        printf("ќшибка: введены некорректные данные.");
+        return 1;
+    }
+    int b = a;
+    for (int b=1; b<=a; b++)
+    {   
+        count = 0;
+        for (int i=1; i<=b; i++)
+        {
+            if (b%i==0)
+            {
+                count++;
+            }
+        }
+        if (count==2)
+        {
+            printf("%d - простое число\n",b);
+            count = 0;
+        }
+    }
+    return 0;
+}
 int main(void)
 {
     SetConsoleOutputCP(1251);
     SetConsoleCP(1251);
-    BracketBalance();
+    printf("¬ведите число, задающее верхнюю границу вывода\n");
+    SimpleNumbers();
+    //BracketBalance();
     //LuckyTickets();
     //IncompleteQuotient();
     //ZerosArray();
