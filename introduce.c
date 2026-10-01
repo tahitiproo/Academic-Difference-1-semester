@@ -195,10 +195,11 @@ int BracketBalance()
     }
     return 0;
 }
-int SimpleNumbers()
+int PrimeNumbers()
 {
     int a;
     int count = 0;
+    printf("Введите число, задающее верхнюю границу вывода\n");
     if (scanf("%d",&a)!=1)
     {
         printf("Ошибка: введены некорректные данные.");
@@ -223,12 +224,85 @@ int SimpleNumbers()
     }
     return 0;
 }
+int CountsSubstring()
+{
+    char main_string[255];
+    char sub_string[255];
+    int main_count = 0;
+    int sub_count = 0;
+    int sub_i = 0;
+    int main_i = 0;
+    printf("Введите строку S: ");
+    if (scanf("%s", main_string) != 1)
+    {
+        printf("Ошибка: введены некорректные данные");
+        return 1;
+    }
+    else if (strlen(main_string) > 255)
+    {
+        printf("Ошибка: введенная строка превышает допустимую длину");
+        return 1;
+    }
+    else
+    {
+        printf("Введите строку S1: ");
+        if (scanf("%s", sub_string) != 1)
+        {
+            printf("Ошибка: введены некорректные данные");
+            return 1;
+        }
+        else if (strlen(sub_string) > 255)
+        {
+            printf("Ошибка: введенная строка превышает допустимую длину");
+            return 1;
+        }
+        else
+        {
+            for(; main_i < strlen(main_string); main_i++)
+            {
+                if (main_string[main_i] == sub_string[sub_i])
+                {
+                    sub_count++;
+                    sub_i++;
+                    if (sub_count == strlen(sub_string))
+                    {
+                        main_count++;
+                        sub_count = 0;
+                        sub_i=0;
+                    }
+                }
+                else
+                {
+                    sub_i=0;
+                }
+            } 
+        }
+        printf("Количество вхождений строки S1 в строку S: %d\n", main_count);
+        return 0;
+    }
+}
 int main(void)
 {
     SetConsoleOutputCP(1251);
     SetConsoleCP(1251);
-    printf("Введите число, задающее верхнюю границу вывода\n");
-    SimpleNumbers();
+    CountsSubstring();
+            // while (main_i < strlen(main_string))
+            // {
+            //     while(sub_i < strlen(sub_string) || main_i < strlen(sub_string))
+            //         if (main_string [main_i] == sub_string[sub_i])
+            //         {
+            //             main_i++;
+            //             sub_i++;
+            //             break;
+            //         }
+            //         else
+            //         {
+                        
+            //         }
+            //     }
+            // }
+    
+    //PrimeNumbers();
     //BracketBalance();
     //LuckyTickets();
     //IncompleteQuotient();
@@ -249,9 +323,6 @@ int main(void)
     //     printf("Ошибка ввода");
     //     return 1;
     // }
-    
-
-    return 0;
 
 
     // int array_bubble[9] = {9, 0, 5, 7, 3, 8, 2, 4, 6};
@@ -283,6 +354,5 @@ int main(void)
     // size = *(&size - 1);
     // printf("var = %d \n", var);
     // printf("size = %d \n", size);
-    
-
 }
+
