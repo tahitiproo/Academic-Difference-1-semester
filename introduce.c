@@ -281,27 +281,91 @@ int CountsSubstring()
         return 0;
     }
 }
+void ReverseArray(int *array, int m, int n)
+{
+    int offset = 0;
+    for (;(m>0)&& (n>0);)
+    {
+        if(m==n)
+        {
+            for(int i=0; i<m; i++)
+            {
+                Swap(&array[i+offset],&array[i+m+offset]);
+            }
+            return;
+        }
+        else if (m>n)
+        {
+            for(int i=0; i<n; i++)
+            {
+                Swap(&array[i+offset],&array[i+m+offset]);
+            }
+            m=m-n;
+            offset+=n;
+        }
+        else if (m<n)
+        {
+           for(int i=0; i<m; i++)
+            {
+                Swap(&array[i+offset],&array[i+m+offset]);
+            }
+            n=n-m;
+            offset+=m;
+        }
+        for (int i=0; i<m+n; i++)
+        {
+            printf("%d", array[i]);
+        }
+        printf("\n");
+    }
+    
+    
+}
+int HalfArray()
+{
+    int m,n,k;
+    printf("Введите размерности двух отрезков массива через пробел: ");
+    if (scanf("%d %d", &m, &n) !=2)
+    {
+        printf("Ошибка: введены некорректные данные.");
+        return 1;
+    }
+    int *array = malloc((m+n) * sizeof(int));
+    if (array == NULL)
+    {
+        printf("Не удалось выделить память");
+        return 1;
+    }
+    printf("Введите элементы массива через enter\n");
+    for (int i=0; i<m+n; i++)
+    {
+        if (scanf("%d", &array[i]) != 1)
+        {
+            printf("Ошибка: введены некорректные данные.");
+            free(array);
+            return 1;
+        }
+    }
+    ReverseArray(array, m, n);
+        
+    
+    for (int i=0; i<m+n; i++)
+    {
+        printf("%d", array[i]);
+    }
+    free(array);
+    return 0;
+}
 int main(void)
 {
     SetConsoleOutputCP(1251);
     SetConsoleCP(1251);
-    CountsSubstring();
-            // while (main_i < strlen(main_string))
-            // {
-            //     while(sub_i < strlen(sub_string) || main_i < strlen(sub_string))
-            //         if (main_string [main_i] == sub_string[sub_i])
-            //         {
-            //             main_i++;
-            //             sub_i++;
-            //             break;
-            //         }
-            //         else
-            //         {
-                        
-            //         }
-            //     }
-            // }
+    HalfArray();
+    return 0;
+    //SwappingTheEndsArray();
     
+
+    //CountsSubstring();
     //PrimeNumbers();
     //BracketBalance();
     //LuckyTickets();
@@ -341,18 +405,5 @@ int main(void)
     //     }
     //     printf("\n");
     // }
-
-    
-    // }
-    // int var, size;
-    // var = 10;
-    // size = 100;
-    // int *const pvar = &var;
-    // int *const psize = &size;
-    // printf("var is %d \n", var);
-    // printf("size is %d \n", size);
-    // size = *(&size - 1);
-    // printf("var = %d \n", var);
-    // printf("size = %d \n", size);
 }
 
