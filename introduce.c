@@ -30,35 +30,38 @@ int ZerosArray()
 {
     printf("Введите количество элементов массива: ");
     short elementCount;
-    short zeroCount=0;
-    if (scanf("%hd",&elementCount) !=1)
+    short zeroCount = 0;
+    if (scanf("%hd", &elementCount) != 1)
     {
         printf("Ошибка: ввод некорректных данных");
         return 1;
     }
-    int* array = (int*)malloc(elementCount*sizeof(int));
+    int* array = (int*)malloc(elementCount * sizeof(int));
     if (array == NULL)
     {
         printf("Ошибка выделения памяти");
         return 1;
     }
     printf("Введите %hd элементов массива: ", elementCount);
-    for(int i = 0; i<elementCount; i++)
+    for(int index = 0; index < elementCount; index++)
     {
-        if (scanf("%d", &array[i]) != 1)
+        if (scanf("%d", &array[index]) != 1)
         {
             printf("Ошибка: ввод некорректных данных");
+            free(array);
             return 1;
         }
-        if (array[i]==0)
+        if (array[index] == 0)
         {
             zeroCount++;
         }
     }
     free(array);
-    printf("Количество нулевых элементов в массиве: %d",zeroCount);
+    printf("Количество нулевых элементов в массиве: %d", zeroCount);
+    return 0;
 }
-void Swap(int *first, int *second){
+void Swap(int *first, int *second)
+{
     *first = *first ^ *second;
     *second = *first ^ *second;
     *first = *first ^ *second;
@@ -81,15 +84,15 @@ int IncompleteQuotient()
         }
         else
         {
-            for(int i = 1; i < abs(divisor); i++)
+            for(int index = 1; index < abs(divisor); index++)
             {
-                if (abs(value - i) % abs(divisor) == 0)
+                if (abs(value - index) % abs(divisor) == 0)
                 {
-                    value = abs(value - i);
+                    value = abs(value - index);
                     while (value != 0)
                     {
                         value = value - abs(divisor);
-                        if (dividend >=0 && divisor > 0 || dividend <= 0 && divisor < 0)
+                        if (dividend >= 0 && divisor > 0 || dividend <= 0 && divisor < 0)
                         {
                             quotient++;
                         }
@@ -98,7 +101,7 @@ int IncompleteQuotient()
                             quotient--;
                         }
                     }
-                    printf(" Неполное частное %d, остаток %d \n", quotient, i);
+                    printf(" Неполное частное %d, остаток %d \n", quotient, index);
                 }
             }
         }
@@ -108,6 +111,7 @@ int IncompleteQuotient()
         printf("Ошибка: введены некорректные данные.");
         return 1;
     }
+    return 0;
 }
 int LuckyTickets()
 {
@@ -124,51 +128,51 @@ int LuckyTickets()
             temp = temp / 10;
         }
         digitSums[digitSum] += 1;
-        digitSum = 0;
         number++;
     }
     int luckyTicketsCount = 0;
     for (int i = 0; i < arraySize; i++)
     {
-        printf("Количество билетов с суммой %d:%d\n",i,digitSums[i]);
-        luckyTicketsCount += pow(digitSums[i], 2);
+        printf("Количество билетов с суммой %d:%d\n", i, digitSums[i]);
+        luckyTicketsCount += digitSums[i] * digitSums[i];
     }
     printf("Количество счастливых билетов:%d\n",luckyTicketsCount);
+    return 0;
 }
-struct Stack
-{
-    char data[MAX_SIZE];
-    int top;
-};
-int Push(struct Stack *s, char value)
-{
-    if (s->top < MAX_SIZE - 1)
-    {
-        s->top++;
-        s->data[s->top] = value;
-        return 1;
-    }
-    else
-    {
-        printf("Стек переполнен\n");
-        return 0;
-    }
-}
+// struct Stack
+// {
+//     char data[MAX_SIZE];
+//     int top;
+// };
+// int Push(struct Stack *s, char value)
+// {
+//     if (s->top < MAX_SIZE - 1)
+//     {
+//         s->top++;
+//         s->data[s->top] = value;
+//         return 1;
+//     }
+//     else
+//     {
+//         printf("Стек переполнен\n");
+//         return 0;
+//     }
+// }
 int BracketBalance()
 {
-    char string[255];
+    char string[MAX_SIZE];
     int count = 0;
     bool flagBalanced[2] = {false, false};
     printf("Введите строку со скобками: ");
     scanf("%s", string);
     int length = strlen(string);
-    for(int i=0; i < length; i++)
+    for(int index = 0; index < length; index++)
     {
-        switch (string[i])
+        switch (string[index])
         {
             case '(':
                 count++;
-                if (i == length / 2 - 1 && count - 1 == i)
+                if (index == length / 2 - 1 && count - 1 == index)
                 {
                     flagBalanced[0] = true;
                 }
@@ -179,7 +183,7 @@ int BracketBalance()
                 {
                     flagBalanced[1] = false;
                 }
-                else if (i == length - 1 && count == 0)
+                else if (index == length - 1 && count == 0)
                 {
                     flagBalanced[1] = true;
                 }
@@ -200,26 +204,24 @@ int PrimeNumbers()
 {
     int upperBound;
     printf("Введите число, задающее верхнюю границу вывода\n");
-    if (scanf("%d",&upperBound)!=1)
+    if (scanf("%d", &upperBound) != 1)
     {
         printf("Ошибка: введены некорректные данные.");
         return 1;
     }
-    int number = upperBound;
-    for (int number = 1, divisorCount = 0; number<=upperBound; number++)
+    for (int number = 1, divisorCount = 0; number <= upperBound; number++)
     {   
         divisorCount = 0;
-        for (int divisor = 1; divisor<=number; divisor++)
+        for (int divisor = 1; divisor <= number; divisor++)
         {
             if (number % divisor == 0)
             {
                 divisorCount++;
             }
         }
-        if (divisorCount==2)
+        if (divisorCount == 2)
         {
-            printf("%d - простое число\n",number);
-            divisorCount = 0;
+            printf("%d - простое число\n", number);
         }
     }
     return 0;
@@ -231,20 +233,15 @@ int CountsSubstring()
     int mainCount = 0;
     int subCount = 0;
     printf("Введите строку S: ");
-    if (scanf("%s", mainString) != 1)
+    if (scanf("%254s", mainString) != 1)
     {
         printf("Ошибка: введены некорректные данные");
-        return 1;
-    }
-    else if (strlen(mainString) > MAX_SIZE)
-    {
-        printf("Ошибка: введенная строка превышает допустимую длину");
         return 1;
     }
     else
     {
         printf("Введите строку S1: ");
-        if (scanf("%s", subString) != 1)
+        if (scanf("%254s", subString) != 1)
         {
             printf("Ошибка: введены некорректные данные");
             return 1;
@@ -286,32 +283,38 @@ int CountsSubstring()
 }
 int ReverseArray(int *array, int firstSectionLength, int secondSectionLength)
 {
-    for (int offset = 0;(firstSectionLength > 0) && (secondSectionLength > 0);)
+    for (int offset = 0;
+        (firstSectionLength > 0) && (secondSectionLength > 0);)
     {
         if(firstSectionLength == secondSectionLength)
         {
             for(int index = 0; index < firstSectionLength; index++)
             {
-                Swap(&array[index + offset],&array[index + firstSectionLength + offset]);
-                secondSectionLength--;
+                Swap(&array[index + offset], 
+                    &array[index + firstSectionLength + offset]);
             }
+            return 0;
         }
         else if (firstSectionLength > secondSectionLength)
         {
-            for(int index =0; index < secondSectionLength; index++)
+            for(int index = 0; index < secondSectionLength; index++)
             {
-                Swap(&array[index + offset],&array[index + firstSectionLength + offset]);
+                Swap(&array[index + offset], 
+                    &array[index + firstSectionLength + offset]);
             }
-            firstSectionLength = firstSectionLength - secondSectionLength;
+            firstSectionLength = firstSectionLength - 
+                secondSectionLength;
             offset += secondSectionLength;
         }
         else if (firstSectionLength < secondSectionLength)
         {
            for(int index = 0; index < firstSectionLength; index ++)
             {
-                Swap(&array[index + offset],&array[index + firstSectionLength + offset]);
+                Swap(&array[index + offset], 
+                    &array[index + firstSectionLength + offset]);
             }
-            secondSectionLength = secondSectionLength - firstSectionLength;
+            secondSectionLength = secondSectionLength - 
+                firstSectionLength;
             offset += firstSectionLength;
         }
     }
@@ -319,21 +322,22 @@ int ReverseArray(int *array, int firstSectionLength, int secondSectionLength)
 }
 int HalfArray()
 {
-    int m,n,k;
+    int firstSectionLength, secondSectionLength;
     printf("Введите размерности двух отрезков массива через пробел: ");
-    if (scanf("%d %d", &m, &n) !=2)
+    if (scanf("%d %d", &firstSectionLength, &secondSectionLength) !=2)
     {
         printf("Ошибка: введены некорректные данные.");
         return 1;
     }
-    int *array = malloc((m+n) * sizeof(int));
+    int *array = malloc((firstSectionLength + secondSectionLength) 
+        * sizeof(int));
     if (array == NULL)
     {
         printf("Не удалось выделить память");
         return 1;
     }
     printf("Введите элементы массива через enter\n");
-    for (int i=0; i<m+n; i++)
+    for (int i=0; i < firstSectionLength + secondSectionLength; i++)
     {
         if (scanf("%d", &array[i]) != 1)
         {
@@ -342,11 +346,11 @@ int HalfArray()
             return 1;
         }
     }
-    ReverseArray(array, m, n);
+    ReverseArray(array, firstSectionLength, secondSectionLength);
 
-    for (int i=0; i<m+n; i++)
+    for (int index = 0; index < firstSectionLength + secondSectionLength; index++)
     {
-        printf("%d", array[i]);
+        printf("%d ", array[index]);
     }
     free(array);
     return 0;
@@ -355,11 +359,11 @@ int main(void)
 {
     SetConsoleOutputCP(1251);
     SetConsoleCP(1251);
-    //HalfArray();
+    HalfArray();
     //SwappingTheEndsArray();
     
 
-    CountsSubstring();
+    //CountsSubstring();
     //PrimeNumbers();
     //BracketBalance();
     //LuckyTickets();
