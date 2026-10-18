@@ -416,6 +416,5 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
-
-# Compiled binary files
 *.exe
+*.vscode
