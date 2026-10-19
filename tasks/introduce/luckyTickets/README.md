@@ -1,0 +1,1 @@
+The program calculates the total number of six-digit "lucky tickets" (a ticket is considered "lucky" if the sum of its first three digits equals the sum of its last three digits). Use the method discussed in class: calculate the number of three-digit combinations for every possible sum of digits using an array, then square these values ??and sum the results.
