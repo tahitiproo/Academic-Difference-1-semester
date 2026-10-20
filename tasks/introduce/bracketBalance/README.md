@@ -1,0 +1,1 @@
+An algorithm for checking the balance of parentheses in a given string (i.e., the number of opening parentheses equals the number of closing parentheses, and the nesting rule for parentheses is satisfied). There is only one type of parenthesis.
