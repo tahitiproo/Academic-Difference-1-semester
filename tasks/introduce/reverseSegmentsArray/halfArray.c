@@ -20,7 +20,7 @@ int HalfArray()
         return 1;
     }
     printf("Ââåäèòå ýëåìåíòû ìàññèâà ÷åðåç enter\n");
-    for (int i=0; i < firstSectionLength + secondSectionLength; i++)
+    for (int i = 0; i < firstSectionLength + secondSectionLength; i++)
     {
         if (scanf("%d", &array[i]) != 1)
         {
