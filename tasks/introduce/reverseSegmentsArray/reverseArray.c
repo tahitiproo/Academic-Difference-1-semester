@@ -6,7 +6,7 @@ int ReverseArray(int *array, int firstSectionLength, int secondSectionLength)
     for (int offset = 0;
         (firstSectionLength > 0) && (secondSectionLength > 0);)
     {
-        if(firstSectionLength == secondSectionLength)
+        if (firstSectionLength == secondSectionLength)
         {
             for(int index = 0; index < firstSectionLength; index++)
             {
