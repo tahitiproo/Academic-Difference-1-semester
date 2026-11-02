@@ -6,25 +6,25 @@
 int HalfArray()
 {
     int firstSectionLength, secondSectionLength;
-    printf("Введите размерности двух отрезков массива через пробел: ");
-    if (scanf("%d %d", &firstSectionLength, &secondSectionLength) !=2)
+    printf("Г‚ГўГҐГ¤ГЁГІГҐ Г°Г Г§Г¬ГҐГ°Г­Г®Г±ГІГЁ Г¤ГўГіГµ Г®ГІГ°ГҐГ§ГЄГ®Гў Г¬Г Г±Г±ГЁГўГ  Г·ГҐГ°ГҐГ§ ГЇГ°Г®ГЎГҐГ«: ");
+    if (scanf("%d %d", &firstSectionLength, &secondSectionLength) != 2)
     {
-        printf("Ошибка: введены некорректные данные.");
+        printf("ГЋГёГЁГЎГЄГ : ГўГўГҐГ¤ГҐГ­Г» Г­ГҐГЄГ®Г°Г°ГҐГЄГІГ­Г»ГҐ Г¤Г Г­Г­Г»ГҐ.");
         return 1;
     }
     int *array = malloc((firstSectionLength + secondSectionLength) 
         * sizeof(int));
     if (array == NULL)
     {
-        printf("Не удалось выделить память");
+        printf("ГЌГҐ ГіГ¤Г Г«Г®Г±Гј ГўГ»Г¤ГҐГ«ГЁГІГј ГЇГ Г¬ГїГІГј");
         return 1;
     }
-    printf("Введите элементы массива через enter\n");
+    printf("Г‚ГўГҐГ¤ГЁГІГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ» Г¬Г Г±Г±ГЁГўГ  Г·ГҐГ°ГҐГ§ enter\n");
     for (int i=0; i < firstSectionLength + secondSectionLength; i++)
     {
         if (scanf("%d", &array[i]) != 1)
         {
-            printf("Ошибка: введены некорректные данные.");
+            printf("ГЋГёГЁГЎГЄГ : ГўГўГҐГ¤ГҐГ­Г» Г­ГҐГЄГ®Г°Г°ГҐГЄГІГ­Г»ГҐ Г¤Г Г­Г­Г»ГҐ.");
             free(array);
             return 1;
         }
