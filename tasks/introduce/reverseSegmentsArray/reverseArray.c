@@ -17,7 +17,7 @@ int ReverseArray(int *array, int firstSectionLength, int secondSectionLength)
         }
         else if (firstSectionLength > secondSectionLength)
         {
-            for(int index = 0; index < secondSectionLength; index++)
+            for (int index = 0; index < secondSectionLength; index++)
             {
                 Swap(&array[index + offset], 
                     &array[index + firstSectionLength + offset]);
