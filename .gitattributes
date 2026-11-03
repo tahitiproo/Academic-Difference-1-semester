@@ -1,0 +1,10 @@
+# Automatically normalize line endings for all text files 
+* text=auto
+
+# Force use of LF for scripts and configs
+*.c text eol=lf
+*.h text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sh text eol=lf
+*.md text eol=lf
