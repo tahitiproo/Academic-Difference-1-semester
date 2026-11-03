@@ -2,12 +2,11 @@
 #include <stdlib.h>
 #include "reverseArray.h"
 
-
 int HalfArray()
 {
     int firstSectionLength, secondSectionLength;
     printf("¬ведите размерности двух отрезков массива через пробел: ");
-    if (scanf("%d %d", &firstSectionLength, &secondSectionLength) !=2)
+    if (scanf("%d %d", &firstSectionLength, &secondSectionLength) != 2)
     {
         printf("ќшибка: введены некорректные данные.");
         return 1;
