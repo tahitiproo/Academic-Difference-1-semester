@@ -12,4 +12,5 @@ $(TARGET): $(SRCS)
 
 .PHONY: clean
 clean:
+
 	del /Q $(TARGET) 2>nul || rm -f $(TARGET)

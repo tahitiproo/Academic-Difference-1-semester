@@ -1,0 +1,1 @@
+An algorithm for finding the integer quotient of a division operation, using only addition, subtraction, and multiplication. The program handles negative values ??and returns an error for invalid inputs.

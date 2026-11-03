@@ -6,7 +6,7 @@ int HalfArray()
 {
     int firstSectionLength, secondSectionLength;
     printf("¬ведите размерности двух отрезков массива через пробел: ");
-    if (scanf("%d %d", &firstSectionLength, &secondSectionLength) != 2)
+    if (scanf("%d %d", &firstSectionLength, &secondSectionLength) !=2)
     {
         printf("ќшибка: введены некорректные данные.");
         return 1;
@@ -19,7 +19,7 @@ int HalfArray()
         return 1;
     }
     printf("¬ведите элементы массива через enter\n");
-    for (int i=0; i < firstSectionLength + secondSectionLength; i++)
+    for (int i = 0; i < firstSectionLength + secondSectionLength; i++)
     {
         if (scanf("%d", &array[i]) != 1)
         {

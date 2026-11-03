@@ -1,0 +1,1 @@
+Given an array of integers x[1]...x[m + n], viewed as the concatenation of two segments: an initial part x[1]....x[m] of length m and a final part x[m + 1]...x[m + n] of length n, the task is to swap these two segments without using any additional arrays. A function is implemented that reverses a specified portion of the array.
