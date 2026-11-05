@@ -3,7 +3,8 @@
 #include <stdlib.h>
 
 int HalfArray() {
-  int firstSectionLength, secondSectionLength;
+  int firstSectionLength;
+  int secondSectionLength;
   printf("Введите размерности двух отрезков массива через пробел: ");
   if (scanf("%d %d", &firstSectionLength, &secondSectionLength) != 2) {
     printf("Ошибка: введены некорректные данные.");
