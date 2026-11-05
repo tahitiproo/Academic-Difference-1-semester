@@ -1,7 +1,9 @@
 CC = gcc
 CFLAGS = -g -Wall -I.
+
+DIR ?= tasks/introduce/reverseSegmentsArray
 TARGET = introduce.exe
-SRCS = $(wildcard *.c)
+SRCS = $(wildcard $(DIR)/*.c)
 
 all: $(TARGET)
 
@@ -10,4 +12,5 @@ $(TARGET): $(SRCS)
 
 .PHONY: clean
 clean:
-	rm -f $(TARGET)
+
+	del /Q $(TARGET) 2>nul || rm -f $(TARGET)
