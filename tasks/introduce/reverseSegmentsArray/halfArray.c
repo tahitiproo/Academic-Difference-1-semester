@@ -1,39 +1,33 @@
+#include "reverseArray.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "reverseArray.h"
 
-int HalfArray()
-{
-    int firstSectionLength, secondSectionLength;
-    printf("Введите размерности двух отрезков массива через пробел: ");
-    if (scanf("%d %d", &firstSectionLength, &secondSectionLength) !=2)
-    {
-        printf("Ошибка: введены некорректные данные.");
-        return 1;
+int HalfArray() {
+  int firstSectionLength, secondSectionLength;
+  printf("Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂРЅРѕСЃС‚Рё РґРІСѓС… РѕС‚СЂРµР·РєРѕРІ РјР°СЃСЃРёРІР° С‡РµСЂРµР· РїСЂРѕР±РµР»: ");
+  if (scanf("%d %d", &firstSectionLength, &secondSectionLength) != 2) {
+    printf("РћС€РёР±РєР°: РІРІРµРґРµРЅС‹ РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ.");
+    return 1;
+  }
+  int *array = malloc((firstSectionLength + secondSectionLength) * sizeof(int));
+  if (array == NULL) {
+    printf("РќРµ СѓРґР°Р»РѕСЃСЊ РІС‹РґРµР»РёС‚СЊ РїР°РјСЏС‚СЊ");
+    return 1;
+  }
+  printf("Р’РІРµРґРёС‚Рµ СЌР»РµРјРµРЅС‚С‹ РјР°СЃСЃРёРІР° С‡РµСЂРµР· enter\n");
+  for (int i = 0; i < firstSectionLength + secondSectionLength; i++) {
+    if (scanf("%d", &array[i]) != 1) {
+      printf("РћС€РёР±РєР°: РІРІРµРґРµРЅС‹ РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ.");
+      free(array);
+      return 1;
     }
-    int *array = malloc((firstSectionLength + secondSectionLength) 
-        * sizeof(int));
-    if (array == NULL)
-    {
-        printf("Не удалось выделить память");
-        return 1;
-    }
-    printf("Введите элементы массива через enter\n");
-    for (int i = 0; i < firstSectionLength + secondSectionLength; i++)
-    {
-        if (scanf("%d", &array[i]) != 1)
-        {
-            printf("Ошибка: введены некорректные данные.");
-            free(array);
-            return 1;
-        }
-    }
-    ReverseArray(array, firstSectionLength, secondSectionLength);
+  }
+  ReverseArray(array, firstSectionLength, secondSectionLength);
 
-    for (int index = 0; index < firstSectionLength + secondSectionLength; index++)
-    {
-        printf("%d ", array[index]);
-    }
-    free(array);
-    return 0;
+  for (int index = 0; index < firstSectionLength + secondSectionLength;
+       index++) {
+    printf("%d ", array[index]);
+  }
+  free(array);
+  return 0;
 }
